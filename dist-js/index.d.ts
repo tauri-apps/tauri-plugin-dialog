@@ -72,7 +72,7 @@ interface MessageDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
     title?: string;
     /** The type of the dialog. Defaults to `info`. */
-    type?: 'info' | 'warning' | 'error';
+    type?: "info" | "warning" | "error";
     /** The label of the confirm button. */
     okLabel?: string;
 }
@@ -80,7 +80,7 @@ interface ConfirmDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
     title?: string;
     /** The type of the dialog. Defaults to `info`. */
-    type?: 'info' | 'warning' | 'error';
+    type?: "info" | "warning" | "error";
     /** The label of the confirm button. */
     okLabel?: string;
     /** The label of the cancel button. */
@@ -179,5 +179,5 @@ declare function ask(message: string, options?: string | ConfirmDialogOptions): 
  * @since 1.0.0
  */
 declare function confirm(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
-export type { DialogFilter, OpenDialogOptions, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions };
+export type { DialogFilter, OpenDialogOptions, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
 export { open, save, message, ask, confirm };
