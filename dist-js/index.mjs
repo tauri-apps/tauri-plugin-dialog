@@ -1,6 +1,6 @@
-import { invoke } from '@tauri-apps/api/tauri';
-
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
+// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: MIT
 /**
  * Open a file/directory selection dialog.
  *
@@ -57,7 +57,7 @@ async function open(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return invoke("plugin:dialog|open", { options });
+    return window.__TAURI_INVOKE__("plugin:dialog|open", { options });
 }
 /**
  * Open a file/directory save dialog.
@@ -87,7 +87,7 @@ async function save(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return invoke("plugin:dialog|save", { options });
+    return window.__TAURI_INVOKE__("plugin:dialog|save", { options });
 }
 /**
  * Shows a message dialog with an `Ok` button.
@@ -109,7 +109,7 @@ async function save(options = {}) {
 async function message(message, options) {
     var _a, _b;
     const opts = typeof options === "string" ? { title: options } : options;
-    return invoke("plugin:dialog|message", {
+    return window.__TAURI_INVOKE__("plugin:dialog|message", {
         message: message.toString(),
         title: (_a = opts === null || opts === void 0 ? void 0 : opts.title) === null || _a === void 0 ? void 0 : _a.toString(),
         type_: opts === null || opts === void 0 ? void 0 : opts.type,
@@ -135,7 +135,7 @@ async function message(message, options) {
 async function ask(message, options) {
     var _a, _b, _c, _d, _e;
     const opts = typeof options === "string" ? { title: options } : options;
-    return invoke("plugin:dialog|ask", {
+    return window.__TAURI_INVOKE__("plugin:dialog|ask", {
         message: message.toString(),
         title: (_a = opts === null || opts === void 0 ? void 0 : opts.title) === null || _a === void 0 ? void 0 : _a.toString(),
         type_: opts === null || opts === void 0 ? void 0 : opts.type,
@@ -162,7 +162,7 @@ async function ask(message, options) {
 async function confirm(message, options) {
     var _a, _b, _c, _d, _e;
     const opts = typeof options === "string" ? { title: options } : options;
-    return invoke("plugin:dialog|confirm", {
+    return window.__TAURI_INVOKE__("plugin:dialog|confirm", {
         message: message.toString(),
         title: (_a = opts === null || opts === void 0 ? void 0 : opts.title) === null || _a === void 0 ? void 0 : _a.toString(),
         type_: opts === null || opts === void 0 ? void 0 : opts.type,
