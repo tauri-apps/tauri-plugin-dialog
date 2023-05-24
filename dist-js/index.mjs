@@ -51,7 +51,7 @@
  *
  * @returns A promise resolving to the selected path(s)
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function open(options = {}) {
     if (typeof options === "object") {
@@ -81,7 +81,7 @@ async function open(options = {}) {
  *
  * @returns A promise resolving to the selected path.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function save(options = {}) {
     if (typeof options === "object") {
@@ -103,7 +103,7 @@ async function save(options = {}) {
  *
  * @returns A promise indicating the success or failure of the operation.
  *
- * @since 1.0.0
+ * @since 2.0.0
  *
  */
 async function message(message, options) {
@@ -130,7 +130,7 @@ async function message(message, options) {
  *
  * @returns A promise resolving to a boolean indicating whether `Yes` was clicked or not.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function ask(message, options) {
     var _a, _b, _c, _d, _e;
@@ -157,7 +157,7 @@ async function ask(message, options) {
  *
  * @returns A promise resolving to a boolean indicating whether `Ok` was clicked or not.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 async function confirm(message, options) {
     var _a, _b, _c, _d, _e;

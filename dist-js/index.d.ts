@@ -17,7 +17,7 @@ interface FileResponse {
 /**
  * Extension filters for the file dialog.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 interface DialogFilter {
     /** Filter name. */
@@ -34,7 +34,7 @@ interface DialogFilter {
 /**
  * Options for the open dialog.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 interface OpenDialogOptions {
     /** The title of the dialog window. */
@@ -56,7 +56,7 @@ interface OpenDialogOptions {
 /**
  * Options for the save dialog.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 interface SaveDialogOptions {
     /** The title of the dialog window. */
@@ -71,7 +71,7 @@ interface SaveDialogOptions {
     defaultPath?: string;
 }
 /**
- * @since 1.0.0
+ * @since 2.0.0
  */
 interface MessageDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
@@ -129,7 +129,7 @@ declare function open(options?: OpenDialogOptions & {
  *
  * @returns A promise resolving to the selected path.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function save(options?: SaveDialogOptions): Promise<string | null>;
 /**
@@ -146,7 +146,7 @@ declare function save(options?: SaveDialogOptions): Promise<string | null>;
  *
  * @returns A promise indicating the success or failure of the operation.
  *
- * @since 1.0.0
+ * @since 2.0.0
  *
  */
 declare function message(message: string, options?: string | MessageDialogOptions): Promise<void>;
@@ -164,7 +164,7 @@ declare function message(message: string, options?: string | MessageDialogOption
  *
  * @returns A promise resolving to a boolean indicating whether `Yes` was clicked or not.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function ask(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
 /**
@@ -181,7 +181,7 @@ declare function ask(message: string, options?: string | ConfirmDialogOptions): 
  *
  * @returns A promise resolving to a boolean indicating whether `Ok` was clicked or not.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
 declare function confirm(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
 export type { DialogFilter, OpenDialogOptions, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
