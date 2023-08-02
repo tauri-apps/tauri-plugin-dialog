@@ -12,7 +12,7 @@
  * You can save it to the filesystem using [tauri-plugin-persisted-scope](https://github.com/tauri-apps/tauri-plugin-persisted-scope).
  * @example
  * ```typescript
- * import { open } from '@tauri-apps/api/dialog';
+ * import { open } from '@tauri-apps/plugin-dialog';
  * // Open a selection dialog for image files
  * const selected = await open({
  *   multiple: true,
@@ -32,7 +32,7 @@
  *
  * @example
  * ```typescript
- * import { open } from '@tauri-apps/api/dialog';
+ * import { open } from '@tauri-apps/plugin-dialog';
  * import { appDir } from '@tauri-apps/api/path';
  * // Open a selection dialog for directories
  * const selected = await open({
@@ -70,7 +70,7 @@ async function open(options = {}) {
  * You can save it to the filesystem using [tauri-plugin-persisted-scope](https://github.com/tauri-apps/tauri-plugin-persisted-scope).
  * @example
  * ```typescript
- * import { save } from '@tauri-apps/api/dialog';
+ * import { save } from '@tauri-apps/plugin-dialog';
  * const filePath = await save({
  *   filters: [{
  *     name: 'Image',
@@ -93,7 +93,7 @@ async function save(options = {}) {
  * Shows a message dialog with an `Ok` button.
  * @example
  * ```typescript
- * import { message } from '@tauri-apps/api/dialog';
+ * import { message } from '@tauri-apps/plugin-dialog';
  * await message('Tauri is awesome', 'Tauri');
  * await message('File not found', { title: 'Tauri', type: 'error' });
  * ```
@@ -120,7 +120,7 @@ async function message(message, options) {
  * Shows a question dialog with `Yes` and `No` buttons.
  * @example
  * ```typescript
- * import { ask } from '@tauri-apps/api/dialog';
+ * import { ask } from '@tauri-apps/plugin-dialog';
  * const yes = await ask('Are you sure?', 'Tauri');
  * const yes2 = await ask('This action cannot be reverted. Are you sure?', { title: 'Tauri', type: 'warning' });
  * ```
@@ -147,7 +147,7 @@ async function ask(message, options) {
  * Shows a question dialog with `Ok` and `Cancel` buttons.
  * @example
  * ```typescript
- * import { confirm } from '@tauri-apps/api/dialog';
+ * import { confirm } from '@tauri-apps/plugin-dialog';
  * const confirmed = await confirm('Are you sure?', 'Tauri');
  * const confirmed2 = await confirm('This action cannot be reverted. Are you sure?', { title: 'Tauri', type: 'warning' });
  * ```
