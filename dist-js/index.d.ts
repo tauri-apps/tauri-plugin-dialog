@@ -1,8 +1,3 @@
-declare global {
-    interface Window {
-        __TAURI_INVOKE__: <T>(cmd: string, args?: unknown) => Promise<T>;
-    }
-}
 interface FileResponse {
     base64Data?: string;
     duration?: number;
