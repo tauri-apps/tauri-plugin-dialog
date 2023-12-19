@@ -1,6 +1,6 @@
 'use strict';
 
-var primitives = require('@tauri-apps/api/primitives');
+var core = require('@tauri-apps/api/core');
 
 // Copyright 2019-2023 Tauri Programme within The Commons Conservancy
 // SPDX-License-Identifier: Apache-2.0
@@ -61,7 +61,7 @@ async function open(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return primitives.invoke("plugin:dialog|open", { options });
+    return core.invoke("plugin:dialog|open", { options });
 }
 /**
  * Open a file/directory save dialog.
@@ -91,7 +91,7 @@ async function save(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return primitives.invoke("plugin:dialog|save", { options });
+    return core.invoke("plugin:dialog|save", { options });
 }
 /**
  * Shows a message dialog with an `Ok` button.
@@ -112,7 +112,7 @@ async function save(options = {}) {
  */
 async function message(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return primitives.invoke("plugin:dialog|message", {
+    return core.invoke("plugin:dialog|message", {
         message: message.toString(),
         title: opts?.title?.toString(),
         type_: opts?.type,
@@ -137,7 +137,7 @@ async function message(message, options) {
  */
 async function ask(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return primitives.invoke("plugin:dialog|ask", {
+    return core.invoke("plugin:dialog|ask", {
         message: message.toString(),
         title: opts?.title?.toString(),
         type_: opts?.type,
@@ -163,7 +163,7 @@ async function ask(message, options) {
  */
 async function confirm(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return primitives.invoke("plugin:dialog|confirm", {
+    return core.invoke("plugin:dialog|confirm", {
         message: message.toString(),
         title: opts?.title?.toString(),
         type_: opts?.type,
