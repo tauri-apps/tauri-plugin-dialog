@@ -179,5 +179,5 @@ declare function ask(message: string, options?: string | ConfirmDialogOptions): 
  * @since 2.0.0
  */
 declare function confirm(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
-export type { DialogFilter, OpenDialogOptions, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
+export type { DialogFilter, FileResponse, OpenDialogOptions, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
 export { open, save, message, ask, confirm };
