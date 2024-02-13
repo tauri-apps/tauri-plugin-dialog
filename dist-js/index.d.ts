@@ -71,16 +71,16 @@ interface SaveDialogOptions {
 interface MessageDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
     title?: string;
-    /** The type of the dialog. Defaults to `info`. */
-    type?: "info" | "warning" | "error";
+    /** The kind of the dialog. Defaults to `info`. */
+    kind?: "info" | "warning" | "error";
     /** The label of the confirm button. */
     okLabel?: string;
 }
 interface ConfirmDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
     title?: string;
-    /** The type of the dialog. Defaults to `info`. */
-    type?: "info" | "warning" | "error";
+    /** The kind of the dialog. Defaults to `info`. */
+    kind?: "info" | "warning" | "error";
     /** The label of the confirm button. */
     okLabel?: string;
     /** The label of the cancel button. */
@@ -171,7 +171,7 @@ declare function save(options?: SaveDialogOptions): Promise<string | null>;
  * ```typescript
  * import { message } from '@tauri-apps/plugin-dialog';
  * await message('Tauri is awesome', 'Tauri');
- * await message('File not found', { title: 'Tauri', type: 'error' });
+ * await message('File not found', { title: 'Tauri', kind: 'error' });
  * ```
  *
  * @param message The message to show.
@@ -189,7 +189,7 @@ declare function message(message: string, options?: string | MessageDialogOption
  * ```typescript
  * import { ask } from '@tauri-apps/plugin-dialog';
  * const yes = await ask('Are you sure?', 'Tauri');
- * const yes2 = await ask('This action cannot be reverted. Are you sure?', { title: 'Tauri', type: 'warning' });
+ * const yes2 = await ask('This action cannot be reverted. Are you sure?', { title: 'Tauri', kind: 'warning' });
  * ```
  *
  * @param message The message to show.
@@ -206,7 +206,7 @@ declare function ask(message: string, options?: string | ConfirmDialogOptions): 
  * ```typescript
  * import { confirm } from '@tauri-apps/plugin-dialog';
  * const confirmed = await confirm('Are you sure?', 'Tauri');
- * const confirmed2 = await confirm('This action cannot be reverted. Are you sure?', { title: 'Tauri', type: 'warning' });
+ * const confirmed2 = await confirm('This action cannot be reverted. Are you sure?', { title: 'Tauri', kind: 'warning' });
  * ```
  *
  * @param message The message to show.
