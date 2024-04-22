@@ -57,11 +57,13 @@ var core = require('@tauri-apps/api/core');
  *
  * @since 2.0.0
  */
-async function open(options = {}) {
+async function open(
+// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return core.invoke("plugin:dialog|open", { options });
+    return await core.invoke("plugin:dialog|open", { options });
 }
 /**
  * Open a file/directory save dialog.
@@ -91,7 +93,7 @@ async function save(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
-    return core.invoke("plugin:dialog|save", { options });
+    return await core.invoke("plugin:dialog|save", { options });
 }
 /**
  * Shows a message dialog with an `Ok` button.
@@ -112,7 +114,7 @@ async function save(options = {}) {
  */
 async function message(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return core.invoke("plugin:dialog|message", {
+    await core.invoke("plugin:dialog|message", {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
@@ -137,7 +139,7 @@ async function message(message, options) {
  */
 async function ask(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return core.invoke("plugin:dialog|ask", {
+    return await core.invoke("plugin:dialog|ask", {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
@@ -163,7 +165,7 @@ async function ask(message, options) {
  */
 async function confirm(message, options) {
     const opts = typeof options === "string" ? { title: options } : options;
-    return core.invoke("plugin:dialog|confirm", {
+    return await core.invoke("plugin:dialog|confirm", {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
