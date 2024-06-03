@@ -55,9 +55,7 @@ import { invoke } from '@tauri-apps/api/core';
  *
  * @since 2.0.0
  */
-async function open(
-// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-options = {}) {
+async function open(options = {}) {
     if (typeof options === "object") {
         Object.freeze(options);
     }
