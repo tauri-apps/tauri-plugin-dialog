@@ -32,11 +32,18 @@ interface DialogFilter {
  * @since 2.0.0
  */
 interface OpenDialogOptions {
-    /** The title of the dialog window. */
+    /** The title of the dialog window (desktop only). */
     title?: string;
     /** The filters of the dialog. */
     filters?: DialogFilter[];
-    /** Initial directory or file path. */
+    /**
+     * Initial directory or file path.
+     * If it's a directory path, the dialog interface will change to that folder.
+     * If it's not an existing directory, the file name will be set to the dialog's file name input and the dialog will be set to the parent folder.
+     *
+     * On mobile the file name is always used on the dialog's file name input.
+     * If not provided, Android uses `(invalid).txt` as default file name.
+     */
     defaultPath?: string;
     /** Whether the dialog allows multiple selection or not. */
     multiple?: boolean;
@@ -56,7 +63,7 @@ interface OpenDialogOptions {
  * @since 2.0.0
  */
 interface SaveDialogOptions {
-    /** The title of the dialog window. */
+    /** The title of the dialog window (desktop only). */
     title?: string;
     /** The filters of the dialog. */
     filters?: DialogFilter[];
@@ -64,6 +71,9 @@ interface SaveDialogOptions {
      * Initial directory or file path.
      * If it's a directory path, the dialog interface will change to that folder.
      * If it's not an existing directory, the file name will be set to the dialog's file name input and the dialog will be set to the parent folder.
+     *
+     * On mobile the file name is always used on the dialog's file name input.
+     * If not provided, Android uses `(invalid).txt` as default file name.
      */
     defaultPath?: string;
     /** Whether to allow creating directories in the dialog. Enabled by default. **macOS Only** */
