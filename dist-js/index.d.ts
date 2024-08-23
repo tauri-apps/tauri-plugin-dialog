@@ -1,14 +1,3 @@
-interface FileResponse {
-    base64Data?: string;
-    duration?: number;
-    height?: number;
-    width?: number;
-    mimeType?: string;
-    modifiedAt?: number;
-    name?: string;
-    path: string;
-    size: number;
-}
 /**
  * Extension filters for the file dialog.
  *
@@ -100,7 +89,7 @@ interface ConfirmDialogOptions {
     /** The label of the cancel button. */
     cancelLabel?: string;
 }
-type OpenDialogReturn<T extends OpenDialogOptions> = T["directory"] extends true ? T["multiple"] extends true ? string[] | null : string | null : T["multiple"] extends true ? FileResponse[] | null : FileResponse | null;
+type OpenDialogReturn<T extends OpenDialogOptions> = T["directory"] extends true ? T["multiple"] extends true ? string[] | null : string | null : T["multiple"] extends true ? string[] | null : string | null;
 /**
  * Open a file/directory selection dialog.
  *
@@ -231,5 +220,5 @@ declare function ask(message: string, options?: string | ConfirmDialogOptions): 
  * @since 2.0.0
  */
 declare function confirm(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
-export type { DialogFilter, FileResponse, OpenDialogOptions, OpenDialogReturn, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
+export type { DialogFilter, OpenDialogOptions, OpenDialogReturn, SaveDialogOptions, MessageDialogOptions, ConfirmDialogOptions, };
 export { open, save, message, ask, confirm };
