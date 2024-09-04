@@ -58,10 +58,10 @@ var core = require('@tauri-apps/api/core');
  * @since 2.0.0
  */
 async function open(options = {}) {
-    if (typeof options === "object") {
+    if (typeof options === 'object') {
         Object.freeze(options);
     }
-    return await core.invoke("plugin:dialog|open", { options });
+    return await core.invoke('plugin:dialog|open', { options });
 }
 /**
  * Open a file/directory save dialog.
@@ -88,10 +88,10 @@ async function open(options = {}) {
  * @since 2.0.0
  */
 async function save(options = {}) {
-    if (typeof options === "object") {
+    if (typeof options === 'object') {
         Object.freeze(options);
     }
-    return await core.invoke("plugin:dialog|save", { options });
+    return await core.invoke('plugin:dialog|save', { options });
 }
 /**
  * Shows a message dialog with an `Ok` button.
@@ -111,12 +111,12 @@ async function save(options = {}) {
  *
  */
 async function message(message, options) {
-    const opts = typeof options === "string" ? { title: options } : options;
-    await core.invoke("plugin:dialog|message", {
+    const opts = typeof options === 'string' ? { title: options } : options;
+    await core.invoke('plugin:dialog|message', {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
-        okButtonLabel: opts?.okLabel?.toString(),
+        okButtonLabel: opts?.okLabel?.toString()
     });
 }
 /**
@@ -136,13 +136,13 @@ async function message(message, options) {
  * @since 2.0.0
  */
 async function ask(message, options) {
-    const opts = typeof options === "string" ? { title: options } : options;
-    return await core.invoke("plugin:dialog|ask", {
+    const opts = typeof options === 'string' ? { title: options } : options;
+    return await core.invoke('plugin:dialog|ask', {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
-        okButtonLabel: opts?.okLabel?.toString() ?? "Yes",
-        cancelButtonLabel: opts?.cancelLabel?.toString() ?? "No",
+        okButtonLabel: opts?.okLabel?.toString() ?? 'Yes',
+        cancelButtonLabel: opts?.cancelLabel?.toString() ?? 'No'
     });
 }
 /**
@@ -162,13 +162,13 @@ async function ask(message, options) {
  * @since 2.0.0
  */
 async function confirm(message, options) {
-    const opts = typeof options === "string" ? { title: options } : options;
-    return await core.invoke("plugin:dialog|confirm", {
+    const opts = typeof options === 'string' ? { title: options } : options;
+    return await core.invoke('plugin:dialog|confirm', {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
-        okButtonLabel: opts?.okLabel?.toString() ?? "Ok",
-        cancelButtonLabel: opts?.cancelLabel?.toString() ?? "Cancel",
+        okButtonLabel: opts?.okLabel?.toString() ?? 'Ok',
+        cancelButtonLabel: opts?.cancelLabel?.toString() ?? 'Cancel'
     });
 }
 
