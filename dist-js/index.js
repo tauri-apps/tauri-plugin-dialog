@@ -4,6 +4,29 @@ import { invoke } from '@tauri-apps/api/core';
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-License-Identifier: MIT
 /**
+ * Internal function to convert the buttons to the Rust type.
+ */
+function buttonsToRust(buttons) {
+    if (buttons === undefined) {
+        return undefined;
+    }
+    if (typeof buttons === 'string') {
+        return buttons;
+    }
+    else if ('ok' in buttons && 'cancel' in buttons) {
+        return { OkCancelCustom: [buttons.ok, buttons.cancel] };
+    }
+    else if ('yes' in buttons && 'no' in buttons && 'cancel' in buttons) {
+        return {
+            YesNoCancelCustom: [buttons.yes, buttons.no, buttons.cancel]
+        };
+    }
+    else if ('ok' in buttons) {
+        return { OkCustom: buttons.ok };
+    }
+    return undefined;
+}
+/**
  * Open a file/directory selection dialog.
  *
  * The selected paths are added to the filesystem and asset protocol scopes.
@@ -110,11 +133,12 @@ async function save(options = {}) {
  */
 async function message(message, options) {
     const opts = typeof options === 'string' ? { title: options } : options;
-    await invoke('plugin:dialog|message', {
+    return invoke('plugin:dialog|message', {
         message: message.toString(),
         title: opts?.title?.toString(),
         kind: opts?.kind,
-        okButtonLabel: opts?.okLabel?.toString()
+        okButtonLabel: opts?.okLabel?.toString(),
+        buttons: buttonsToRust(opts?.buttons)
     });
 }
 /**
