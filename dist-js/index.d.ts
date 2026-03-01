@@ -346,6 +346,9 @@ export type MessageDialogResult = 'Yes' | 'No' | 'Ok' | 'Cancel' | (string & {})
 declare function message(message: string, options?: string | MessageDialogOptions): Promise<MessageDialogResult>;
 /**
  * Shows a question dialog with `Yes` and `No` buttons.
+ *
+ * Convenient wrapper for `await message('msg', { buttons: 'YesNo' }) === 'Yes'`
+ *
  * @example
  * ```typescript
  * import { ask } from '@tauri-apps/plugin-dialog';
@@ -363,6 +366,9 @@ declare function message(message: string, options?: string | MessageDialogOption
 declare function ask(message: string, options?: string | ConfirmDialogOptions): Promise<boolean>;
 /**
  * Shows a question dialog with `Ok` and `Cancel` buttons.
+ *
+ * Convenient wrapper for `await message('msg', { buttons: 'OkCancel' }) === 'Ok'`
+ *
  * @example
  * ```typescript
  * import { confirm } from '@tauri-apps/plugin-dialog';
