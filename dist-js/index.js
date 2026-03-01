@@ -119,7 +119,6 @@ async function messageCommand(message, options) {
         message,
         title: options?.title,
         kind: options?.kind,
-        okButtonLabel: options?.okLabel,
         buttons: buttonsToRust(options?.buttons)
     });
 }
@@ -142,6 +141,9 @@ async function messageCommand(message, options) {
  */
 async function message(message, options) {
     const opts = typeof options === 'string' ? { title: options } : options;
+    if (opts && !opts.buttons && opts.okLabel) {
+        opts.buttons = { ok: opts.okLabel };
+    }
     return messageCommand(message, opts);
 }
 /**
