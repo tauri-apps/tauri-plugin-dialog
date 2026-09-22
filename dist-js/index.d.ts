@@ -199,12 +199,6 @@ interface MessageDialogOptions {
     /** The kind of the dialog. Defaults to `info`. */
     kind?: 'info' | 'warning' | 'error';
     /**
-     * The label of the Ok button.
-     *
-     * @deprecated Use {@linkcode MessageDialogOptions.buttons} instead.
-     */
-    okLabel?: string;
-    /**
      * The buttons of the dialog.
      *
      * @example
