@@ -4,7 +4,7 @@
  * @since 2.0.0
  */
 interface DialogFilter {
-    /** Filter name. */
+    /** The name of the filter, shown to the user in the dialog's filter selector. */
     name: string;
     /**
      * Extensions to filter, without a `.` prefix.
@@ -151,11 +151,11 @@ type BanExcept<Allowed extends ButtonKey> = Partial<Record<Exclude<ButtonKey, Al
  * @since 2.4.0
  */
 export type MessageDialogButtonsYesNoCancel = {
-    /** The Yes button. */
+    /** The label of the Yes button. */
     yes: string;
-    /** The No button. */
+    /** The label of the No button. */
     no: string;
-    /** The Cancel button. */
+    /** The label of the Cancel button. */
     cancel: string;
 } & BanExcept<'yes' | 'no' | 'cancel'>;
 /**
@@ -164,9 +164,9 @@ export type MessageDialogButtonsYesNoCancel = {
  * @since 2.4.0
  */
 export type MessageDialogButtonsOkCancel = {
-    /** The Ok button. */
+    /** The label of the Ok button. */
     ok: string;
-    /** The Cancel button. */
+    /** The label of the Cancel button. */
     cancel: string;
 } & BanExcept<'ok' | 'cancel'>;
 /**
@@ -175,7 +175,7 @@ export type MessageDialogButtonsOkCancel = {
  * @since 2.4.0
  */
 export type MessageDialogButtonsOk = {
-    /** The Ok button. */
+    /** The label of the Ok button. */
     ok: string;
 } & BanExcept<'ok'>;
 /**
@@ -191,6 +191,8 @@ export type MessageDialogCustomButtons = MessageDialogButtonsYesNoCancel | Messa
  */
 export type MessageDialogButtons = MessageDialogDefaultButtons | MessageDialogCustomButtons;
 /**
+ * Options for the message dialog.
+ *
  * @since 2.0.0
  */
 interface MessageDialogOptions {
@@ -228,6 +230,11 @@ interface MessageDialogOptions {
      */
     buttons?: MessageDialogButtons;
 }
+/**
+ * Options for the {@linkcode ask} and {@linkcode confirm} dialogs.
+ *
+ * @since 2.0.0
+ */
 interface ConfirmDialogOptions {
     /** The title of the dialog. Defaults to the app name. */
     title?: string;
@@ -238,6 +245,12 @@ interface ConfirmDialogOptions {
     /** The label of the cancel button. */
     cancelLabel?: string;
 }
+/**
+ * The return type of {@linkcode open}, derived from its options: a single path, an array of
+ * paths when {@linkcode OpenDialogOptions.multiple} is `true`, or `null` when the user cancels.
+ *
+ * @since 2.0.0
+ */
 type OpenDialogReturn<T extends OpenDialogOptions> = T['directory'] extends true ? T['multiple'] extends true ? string[] | null : string | null : T['multiple'] extends true ? string[] | null : string | null;
 /**
  * Open a file/directory selection dialog.
@@ -287,6 +300,8 @@ type OpenDialogReturn<T extends OpenDialogOptions> = T['directory'] extends true
  * }
  * ```
  *
+ * @param options The dialog's options.
+ *
  * @returns A promise resolving to the selected path(s)
  *
  * @since 2.0.0
@@ -311,6 +326,8 @@ declare function open<T extends OpenDialogOptions>(options?: T): Promise<OpenDia
  *   }]
  * });
  * ```
+ *
+ * @param options The dialog's options.
  *
  * @returns A promise resolving to the selected path.
  *
