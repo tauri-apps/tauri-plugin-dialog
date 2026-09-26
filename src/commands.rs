@@ -172,12 +172,13 @@ pub(crate) async fn open<R: Runtime>(
             } else {
                 let folder = dialog_builder.blocking_pick_folder();
                 if let Some(folder) = &folder
-                    && let Ok(path) = folder.clone().into_path() {
-                        if let Some(s) = window.try_fs_scope() {
-                            s.allow_directory(&path, options.recursive)?;
-                        }
-                        tauri_scope.allow_directory(&path, options.directory)?;
+                    && let Ok(path) = folder.clone().into_path()
+                {
+                    if let Some(s) = window.try_fs_scope() {
+                        s.allow_directory(&path, options.recursive)?;
                     }
+                    tauri_scope.allow_directory(&path, options.directory)?;
+                }
                 OpenResponse::Folder(folder.map(|p| p.simplified()))
             }
         }
@@ -204,12 +205,13 @@ pub(crate) async fn open<R: Runtime>(
         let file = dialog_builder.blocking_pick_file();
 
         if let Some(file) = &file
-            && let Ok(path) = file.clone().into_path() {
-                if let Some(s) = window.try_fs_scope() {
-                    s.allow_file(&path)?;
-                }
-                tauri_scope.allow_file(&path)?;
+            && let Ok(path) = file.clone().into_path()
+        {
+            if let Some(s) = window.try_fs_scope() {
+                s.allow_file(&path)?;
             }
+            tauri_scope.allow_file(&path)?;
+        }
         OpenResponse::File(file.map(|f| f.simplified()))
     };
     Ok(res)
@@ -245,12 +247,13 @@ pub(crate) async fn save<R: Runtime>(
 
     let path = dialog_builder.blocking_save_file();
     if let Some(p) = &path
-        && let Ok(path) = p.clone().into_path() {
-            if let Some(s) = window.try_fs_scope() {
-                s.allow_file(&path)?;
-            }
-            tauri_scope.allow_file(&path)?;
+        && let Ok(path) = p.clone().into_path()
+    {
+        if let Some(s) = window.try_fs_scope() {
+            s.allow_file(&path)?;
         }
+        tauri_scope.allow_file(&path)?;
+    }
 
     Ok(path.map(|p| p.simplified()))
 }
