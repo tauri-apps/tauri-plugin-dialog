@@ -4,6 +4,11 @@ import { invoke } from '@tauri-apps/api/core';
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-License-Identifier: MIT
 /**
+ * Native system dialogs for opening and saving files, along with message, ask and confirm dialogs.
+ *
+ * @module
+ */
+/**
  * Internal function to convert the buttons to the Rust type.
  */
 function buttonsToRust(buttons) {
@@ -74,6 +79,8 @@ function buttonsToRust(buttons) {
  * }
  * ```
  *
+ * @param options The dialog's options.
+ *
  * @returns A promise resolving to the selected path(s)
  *
  * @since 2.0.0
@@ -103,6 +110,8 @@ async function open(options = {}) {
  *   }]
  * });
  * ```
+ *
+ * @param options The dialog's options.
  *
  * @returns A promise resolving to the selected path.
  *
